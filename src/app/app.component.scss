@@ -1,0 +1,81 @@
+/* src/app/app.component.css */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: beige;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  mat-form-field {
+    margin-bottom: 16px;
+  }
+  
+  .actions {
+    text-align: right;
+    margin-top: 20px;
+  }
+
+  // .address-form {
+  //   display: flex;
+  //   flex-direction: column;
+  
+  //   mat-form-field {
+  //     margin-bottom: 16px; // Ajoute de l'espacement entre les champs
+  //   }
+  // }
+
+  .address-form {
+    .form-row {
+      display: flex;
+      align-items: center; // Aligne les labels et les champs verticalement
+      margin-bottom: 16px;
+  
+      label {
+        width: 150px; // Largeur fixe pour tous les labels
+        margin-right: 8px; // Espacement entre le label et le champ
+        font-weight: bold; // Optionnel : pour mettre les labels en gras
+      }
+  
+      mat-form-field {
+        flex: 1; // Permet au champ de s'étendre pour remplir l'espace disponible
+      }
+    }
+  }
+  .form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .percent-symbol {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+  }
+  .form-row label {
+    margin-right: 10px;
+    width: 200px; /* Ajuste selon la largeur que tu souhaites pour les labels */
+  }
+  
+  .full-width {
+    flex-grow: 1;
+  }
+  
+  
+  
+//   .containert {
+//     display: flex; max-width: 800px;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 16px;
+//       background-color: beige;
+// }
+//   mat-carat{ width: 100%; max-width: 600px;}
+//   .full-width{width: 100%; margin-bottom: 16px;}
+//   .test{background-color: white;}
