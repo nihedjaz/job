@@ -1,211 +1,283 @@
-<div class="container">
-  <mat-tab-group class="test">
-<mat-tab label="Nivellement">
-<mat-card>
-<mat-stepper [linear]="isLinear" #stepper>
-<!-- <mat-step [stepControl]="firstFormGroup"> -->
-<!-- <form [formGroup]="firstFormGroup">
-<ng-template matStepLabel>Données du groupe</ng-template>
-<mat-form-field class="full-width">
-<mat-label>Nom du Groupe</mat-label>
-<input matInput type="text" formControlName="groupName" required>
-</mat-form-field>
-<mat-form-field class="full-width">
-  <mat-label>Devise</mat-label>
-<mat-select formControlName="currency">
-<mat-option value="EUR">Euro</mat-option>
-<mat-option value="USD">Dollar</mat-option>
-<mat-option value="MAD">Dirhams</mat-option>
-</mat-select>
-</mat-form-field>
-<mat-form-field class="full-width">
-<mat-label>RIB</mat-label>
-<input matInput type="text" formControlName="groupName" required/>
-</mat-form-field>
-<mat-form-field class="full-width">
-<mat-label> Banque</mat-label>
-<mat-select formControlName="currency" >
-<mat-option value="EUR">SGMB</mat-option>
-  <mat-option value="USD">Sg Tanger Offshore</mat-option>
-</mat-select>
-</mat-form-field>
-<mat-form-field class="full-width">
-  <mat-label>Bic</mat-label>
-  <input matInput type="text" formControlName="Bic" required/>
-</mat-form-field>
- 
-  <div class="address-form">
-    <div class="form-row">
-      <label for="addressLine1">Adresse - Ligne 1:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="addressLine1" type="text" formControlName="addressLine1" required />
-      </mat-form-field>
+
+<!-- <nb-card>
+  <nb-card-header>
+    <h4 class="header-title">DEMANDES CASHPOOL</h4>
+  </nb-card-header>
+  <nb-card-body>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Numéro Cashpool</th>
+          <th>Nom Group Cashpool</th>
+          <th>Type de Nivellement</th>
+          <th>Devise</th>
+          <th>Numéro Compte Pivot</th>
+          <th>Banque</th>
+          <th>BIC</th>
+          <th>Actions</th>
+        </tr>
+        <tr class="filters-row">
+          <th><input type="number" [(ngModel)]="filters.numeroCashpool" (input)="applyFilters()" placeholder="Numéro" /></th>
+          <th><input type="text" [(ngModel)]="filters.nomGroupCashpool" (input)="applyFilters()" placeholder="Nom Group" /></th>
+          <th>
+            <nb-select [(ngModel)]="filters.typeNivellement" (selectedChange)="applyFilters()" placeholder="Type">
+              <nb-option value="">Tous</nb-option>
+              <nb-option value="Directe">Directe</nb-option>
+              <nb-option value="Indirecte">Indirecte</nb-option>
+            </nb-select>
+          </th>
+          <th>
+            <nb-select [(ngModel)]="filters.devise" (selectedChange)="applyFilters()" placeholder="Devise">
+              <nb-option value="">Tous</nb-option>
+              <nb-option *ngFor="let devise of devises" [value]="devise">{{ devise }}</nb-option>
+            </nb-select>
+          </th>
+          <th><input type="number" [(ngModel)]="filters.numeroComptePivot" (input)="applyFilters()" placeholder="Numéro Compte" /></th>
+          <th><input type="text" [(ngModel)]="filters.banque" (input)="applyFilters()" placeholder="Banque" /></th>
+          <th><input type="text" [(ngModel)]="filters.bic" (input)="applyFilters()" placeholder="BIC" /></th>
+          <th>
+            <button nbButton status="primary" (click)="resetFilters()">
+              <nb-icon icon="refresh-outline"></nb-icon>
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of filteredData" class="data-row">
+          <td>{{ row.numeroCashpool }}</td>
+          <td>{{ row.nomGroupCashpool }}</td>
+          <td>{{ row.typeNivellement }}</td>
+          <td>{{ row.devise }}</td>
+          <td>{{ row.numeroComptePivot }}</td>
+          <td>{{ row.banque }}</td>
+          <td>{{ row.bic }}</td>
+          <td>
+            <button nbButton status="info">Détails</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </nb-card-body>
+</nb-card> -->
+
+<!-- hedhhha -->
+<!-- <nb-layout>
+  <nb-layout-column>
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>
+            <input
+              type="number"
+              [(ngModel)]="filters.numeroCashpool"
+              (input)="applyFilters()"
+              placeholder="Numéro Cashpool"
+            />
+          </th>
+          <th>
+            <input
+              type="text"
+              [(ngModel)]="filters.nomGroupCashpool"
+              (input)="applyFilters()"
+              placeholder="Nom Group Cashpool"
+            />
+          </th>
+          <th>
+            <nb-select
+              [(ngModel)]="filters.typeNivellement"
+              (selectedChange)="applyFilters()"
+              placeholder="Type de Nivellement"
+            >
+              <nb-option value="">Tous</nb-option>
+              <nb-option value="Directe">Directe</nb-option>
+              <nb-option value="Indirecte">Indirecte</nb-option>
+            </nb-select>
+          </th>
+          <th>
+            <nb-select
+              [(ngModel)]="filters.devise"
+              (selectedChange)="applyFilters()"
+              placeholder="Devise"
+            >
+              <nb-option value="">Tous</nb-option>
+              <nb-option *ngFor="let devise of devises" [value]="devise">{{ devise }}</nb-option>
+            </nb-select>
+          </th>
+          <th>
+            <input
+              type="number"
+              [(ngModel)]="filters.numeroComptePivot"
+              (input)="applyFilters()"
+              placeholder="Numéro Compte Pivot"
+            />
+          </th>
+          <th>
+            <input
+              type="text"
+              [(ngModel)]="filters.banque"
+              (input)="applyFilters()"
+              placeholder="Banque"
+            />
+          </th>
+          <th>
+            <input
+              type="text"
+              [(ngModel)]="filters.bic"
+              (input)="applyFilters()"
+              placeholder="BIC"
+            />
+          </th>
+          <th>
+            <button nbButton status="primary" (click)="resetFilters()">Réinitialiser</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paginatedData">
+          <td>{{ row.numeroCashpool }}</td>
+          <td>{{ row.nomGroupCashpool }}</td>
+          <td>{{ row.typeNivellement }}</td>
+          <td>{{ row.devise }}</td>
+          <td>{{ row.numeroComptePivot }}</td>
+          <td>{{ row.banque }}</td>
+          <td>{{ row.bic }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination-controls">
+      <button (click)="goToPage(1)" [disabled]="currentPage === 1"><<</button>
+      <button (click)="goToPrevious()" [disabled]="currentPage === 1"><</button>
+      <span>Page {{ currentPage }} sur {{ totalPages }}</span>
+      <button (click)="goToNext()" [disabled]="currentPage === totalPages">></button>
+      <button (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages">>></button>
     </div>
-  
-    <div class="form-row">
-      <label for="addressLine2">Adresse - Ligne 2:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="addressLine2" type="text" formControlName="addressLine2" />
-      </mat-form-field>
+  </nb-layout-column>
+</nb-layout> -->
+
+<!-- <nb-layout>
+  <nb-layout-column> -->
+    <nb-layout>
+      <nb-layout-column>
+        <div class="create-contract-button">
+          <button>
+            Créer Compte
+          </button>
+        </div>
+        
+    <table class="custom-table">
+      <thead>
+        <!-- Ligne 1 : Noms des champs -->
+        <tr class="header-fields">
+          <th>Numéro Cashpool</th>
+          <th>Nom Group Cashpool</th>
+          <th>Type de Nivellement</th>
+          <th>Devise</th>
+          <th>Numéro Compte Pivot</th>
+          <th>Banque</th>
+          <th>BIC</th>
+          <th>Actions</th>
+        </tr>
+
+        <!-- Ligne 2 : Filtres -->
+        <tr class="header-filters">
+          <th>
+            <input
+              type="number"
+              [(ngModel)]="filters.numeroCashpool"
+              (input)="applyFilters()"
+              placeholder="Numéro Cashpool"
+            />
+          </th>
+          <th>
+            <input
+              type="text"
+              [(ngModel)]="filters.nomGroupCashpool"
+              (input)="applyFilters()"
+              placeholder="Nom Group Cashpool"
+            />
+          </th>
+          <th>
+            <nb-select
+              [(ngModel)]="filters.typeNivellement"
+              (selectedChange)="applyFilters()"
+              placeholder="Type de Nivellement"
+            >
+              <nb-option value="">Tous</nb-option>
+              <nb-option value="Directe">Directe</nb-option>
+              <nb-option value="Indirecte">Indirecte</nb-option>
+            </nb-select>
+          </th>
+          <th>
+            <nb-select
+              [(ngModel)]="filters.devise"
+              (selectedChange)="applyFilters()"
+              placeholder="Devise"
+            >
+              <nb-option value="">Tous</nb-option>
+              <nb-option *ngFor="let devise of devises" [value]="devise">{{ devise }}</nb-option>
+            </nb-select>
+          </th>
+          <th>
+            <input
+              type="number"
+              [(ngModel)]="filters.numeroComptePivot"
+              (input)="applyFilters()"
+              placeholder="Numéro Compte Pivot"
+            />
+          </th>
+          <th>
+            <input
+              type="text"
+              [(ngModel)]="filters.banque"
+              (input)="applyFilters()"
+              placeholder="Banque"
+            />
+          </th>
+          <th>
+            <input
+              type="text"
+              [(ngModel)]="filters.bic"
+              (input)="applyFilters()"
+              placeholder="BIC"
+            />
+          </th>
+          <th>
+            <i class="fas fa-sync" (click)="resetFilters()"></i>
+            <!-- <button nbButton status="primary" (click)="resetFilters()">Réinitialiser</button> -->
+           
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paginatedData">
+          <td>{{ row.numeroCashpool }}</td>
+          <td>{{ row.nomGroupCashpool }}</td>
+          <td>{{ row.typeNivellement }}</td>
+          <td>{{ row.devise }}</td>
+          <td>{{ row.numeroComptePivot }}</td>
+          <td>{{ row.banque }}</td>
+          <td>{{ row.bic }}</td> 
+          <td class="actions">
+            <i class="fas fa-edit" (click)="editRow(row)" ></i>
+    <i class="fas fa-eye" (click)="viewRow(row)" ></i>
+    <i class="fas fa-times-circle" (click)="closeRow(row)"></i>
+          </td>       
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination avec flèches -->
+    <div class="pagination-controls">
+      <button (click)="goToPage(1)" [disabled]="currentPage === 1"><<</button>
+      <button (click)="goToPrevious()" [disabled]="currentPage === 1"><</button>
+      <span>Page {{ currentPage }} sur {{ totalPages }}</span>
+      <button (click)="goToNext()" [disabled]="currentPage === totalPages">></button>
+      <button (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages">>></button>
     </div>
-  
-    <div class="form-row">
-      <label for="addressLine3">Adresse - Ligne 3:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="addressLine3" type="text" formControlName="addressLine3" />
-      </mat-form-field>
-    </div>
-  </div>
-  
-</form> -->
-
-
-<!-- <form [formGroup]="firstFormGroup">
-  <ng-template matStepLabel>Données du groupe</ng-template>
-
-  <div class="form-row">
-    <label for="groupName">Nom du Groupe:</label>
-    <mat-form-field class="full-width">
-      <input matInput id="groupName" type="text" formControlName="groupName" required>
-    </mat-form-field>
-  </div>
-
-  <div class="form-row">
-    <label for="currency">Devise:</label>
-    <mat-form-field class="full-width">
-      <mat-select formControlName="currency" id="currency">
-        <mat-option value="EUR">Euro</mat-option>
-        <mat-option value="USD">Dollar</mat-option>
-        <mat-option value="MAD">Dirhams</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-
-  <div class="form-row">
-    <label for="rib">RIB:</label>
-    <mat-form-field class="full-width">
-      <input matInput id="rib" type="text" formControlName="groupName" required />
-    </mat-form-field>
-  </div>
-
-  <div class="form-row">
-    <label for="bank">Banque:</label>
-    <mat-form-field class="full-width">
-      <mat-select formControlName="currency" id="bank">
-        <mat-option value="EUR">SGMB</mat-option>
-        <mat-option value="USD">Sg Tanger Offshore</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-
-  <div class="form-row">
-    <label for="bic">Bic:</label>
-    <mat-form-field class="full-width">
-      <input matInput id="bic" type="text" formControlName="Bic" required />
-    </mat-form-field>
-  </div>
-
-  <div class="address-form">
-    <div class="form-row">
-      <label for="addressLine1">Adresse - Ligne 1:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="addressLine1" type="text" formControlName="addressLine1" required />
-      </mat-form-field>
-    </div>
-
-    <div class="form-row">
-      <label for="addressLine2">Adresse - Ligne 2:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="addressLine2" type="text" formControlName="addressLine2" />
-      </mat-form-field>
-    </div>
-
-    <div class="form-row">
-      <label for="addressLine3">Adresse - Ligne 3:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="addressLine3" type="text" formControlName="addressLine3" />
-      </mat-form-field>
-    </div>
-  </div>
-
-</form> -->
-
-<!-- </mat-step> -->
-<!-- <mat-step [stepControl]="secondFormGroup">
-  <form [formGroup]="secondFormGroup">
-  <ng-template matStepLabel>Données du groupe</ng-template>
-  <mat-form-field class="full-width">
-  <mat-label>Nom du Societe</mat-label>
-  <input matInput type="text" formControlName="groupName" required>
-  </mat-form-field>
-  <div class="address-form">
-    <div class="form-row">
-      <label for="addressLine1">Adresse - Ligne 1:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="addressLine1" type="text" formControlName="addressLine1" required />
-      </mat-form-field>
-    </div>
-
-    <div class="form-row">
-      <label for="addressLine2">Adresse - Ligne 2:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="addressLine2" type="text" formControlName="addressLine2" />
-      </mat-form-field>
-    </div>
-
-    <div class="form-row">
-      <label for="addressLine3">Adresse - Ligne 3:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="addressLine3" type="text" formControlName="addressLine3" />
-      </mat-form-field>
-    </div>
-  </div>
-  
-
-  </form>
-  </mat-step> -->
-
-  <mat-step [stepControl]="thirdFormGroup3">
-    <form [formGroup]="thirdFormGroup3">
-    <ng-template matStepLabel>Données de chaque societe</ng-template>
-    <div class="form-row">
-      <label for="groupName">Nature des comptes:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="groupName" type="text" formControlName="natureCompte" required>
-      </mat-form-field>
-    </div>
-   
-    <div class="form-row">
-      <label for="percentage">Pourcentage:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="percentage" formControlName="percentage"  type="number" step="0.01" min="0" max="100" placeholder="0.00" required />
-        <span class="percent-symbol">%</span>
-      </mat-form-field>
-    </div>
-    <div class="form-row">
-      <label for="groupName">Taux créditeur:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="groupName" type="text" formControlName="natureCompte" required>
-      </mat-form-field>
-    </div>
-    <div class="form-row">
-      <label for="groupName">Retenue à la sorce RAS:</label>
-      <mat-form-field class="full-width">
-        <input matInput id="groupName" type="text" formControlName="natureCompte" required>
-      </mat-form-field>
-    </div>
-    
-    </form>
-    </mat-step>
-</mat-stepper>
-</mat-card>
-</mat-tab>
-
-<mat-tab label="ste2">
-  <mat-card></mat-card>
-</mat-tab>
-<mat-tab label="ste3">
-  <mat-card></mat-card>
-</mat-tab>
-</mat-tab-group>
-</div>
+     <!-- <div class="create-contract-button">
+          <button>
+            Créer Compte
+          </button>
+        </div> -->
+  </nb-layout-column>
+</nb-layout>

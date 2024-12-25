@@ -6,18 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
-
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbMenuModule, NbIconModule, NbUserModule, NbActionsModule, NbSearchModule, NbButtonModule, NbContextMenuModule, NbTableModule, NbInputModule, NbSelectModule, NbSpinnerModule } from '@nebular/theme';
+import { NbCardModule } from '@nebular/theme';;
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,13 +20,18 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    MatStepperModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatTabsModule,
-    MatFormFieldModule,
-    MatCardModule,
+    NbLayoutModule,
+    NbCardModule,
+    NbInputModule,
+    NbButtonModule,
+    NbSelectModule,
+    NbIconModule,
+    NbTableModule,
+    NbSpinnerModule,
+    NbActionsModule,
+    NbThemeModule.forRoot({ name: 'default' }), // Ou "dark"
+  
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

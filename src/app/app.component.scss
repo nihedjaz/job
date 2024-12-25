@@ -1,81 +1,203 @@
-/* src/app/app.component.css */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: beige;
-  }
-  
-  .full-width {
-    width: 100%;
-  }
-  
-  mat-form-field {
-    margin-bottom: 16px;
-  }
-  
-  .actions {
-    text-align: right;
-    margin-top: 20px;
-  }
+// .custom-table {
+//   width: 100%;
+//   border-collapse: collapse;
+//   margin-top: 20px;
 
-  // .address-form {
-  //   display: flex;
-  //   flex-direction: column;
-  
-  //   mat-form-field {
-  //     margin-bottom: 16px; // Ajoute de l'espacement entre les champs
-  //   }
-  // }
+//   thead {
+//     background-color: #ff5f57;
+//     color: white;
 
-  .address-form {
-    .form-row {
-      display: flex;
-      align-items: center; // Aligne les labels et les champs verticalement
-      margin-bottom: 16px;
-  
-      label {
-        width: 150px; // Largeur fixe pour tous les labels
-        margin-right: 8px; // Espacement entre le label et le champ
-        font-weight: bold; // Optionnel : pour mettre les labels en gras
+//     th {
+//       padding: 10px;
+//       text-align: left;
+//       border: 1px solid #ddd;
+
+//       input,
+//       nb-select {
+//         width: 100%;
+//         padding: 5px;
+//         font-size: 14px;
+//         border: 1px solid #ccc;
+//         border-radius: 4px;
+//       }
+
+//       button {
+//         width: 100%;
+//         padding: 6px;
+//         font-size: 14px;
+//       }
+//     }
+//   }
+
+//   tbody {
+//     tr {
+//       &:nth-child(even) {
+//         background-color: #f9f9f9;
+//       }
+
+//       &:hover {
+//         background-color: #f1f1f1;
+//       }
+
+//       td {
+//         padding: 10px;
+//         text-align: left;
+//         border: 1px solid #ddd;
+//         font-size: 14px;
+//       }
+//     }
+//   }
+// }
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  /* Styles pour la ligne des noms des champs */
+  thead {
+    background-color: #f8f9fa;
+
+    .header-fields {
+      th {
+        background-color: #ce172d;
+        color: white;
+        padding: 12px;
+        font-weight: bold;
+        text-align: center;
       }
-  
-      mat-form-field {
-        flex: 1; // Permet au champ de s'étendre pour remplir l'espace disponible
+    }
+
+    /* Styles pour la ligne des filtres */
+    .header-filters {
+      th {
+        padding: 10px;
+        background-color: #f1f1f1;
+        text-align: center;
+      }
+
+      input, nb-select {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        font-size: 14px;
+        border: none;
+        border-radius: 4px;
+
+        &:hover {
+          background-color: #218838;
+        }
       }
     }
   }
-  .form-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
+}
+  /* Style des lignes de données */
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      &:hover {
+        background-color: #e9ecef;
+      }
+
+      td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+        font-size: 14px;
+      }
+    }
   }
-  
-  .percent-symbol {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
+
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  button {
+    padding: 5px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    background-color: #d6445a;
+    color: white;
+    border-radius: 4px;
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      background-color: #822d40;
+    }
   }
-  .form-row label {
-    margin-right: 10px;
-    width: 200px; /* Ajuste selon la largeur que tu souhaites pour les labels */
+
+  span {
+    margin: 0 15px;
+    font-size: 16px;
   }
-  
-  .full-width {
-    flex-grow: 1;
-  }
-  
-  
-  
-//   .containert {
-//     display: flex; max-width: 800px;
+}
+// .actions {
+//   display: flex;
 //   justify-content: center;
 //   align-items: center;
-//   padding: 16px;
-//       background-color: beige;
+  
+//   nb-icon {
+//     margin: 0 10px;
+//     cursor: pointer;
+
+//     &:hover {
+//       color: #007bff;
+//     }
+//   }
 // }
-//   mat-carat{ width: 100%; max-width: 600px;}
-//   .full-width{width: 100%; margin-bottom: 16px;}
-//   .test{background-color: white;}
+
+.actions {
+  display: flex;
+  gap: 10px; /* Espacement de 10px entre toutes les icônes */
+}
+
+.custom-table .action-icon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.custom-table .action-icon:hover {
+  transform: scale(1.2);
+}
+
+/*******/
+.create-contract-button {
+  margin-bottom: 20px; /* Espacement entre le bouton et le tableau */
+  display: flex;
+  justify-content: flex-end; /* Alignement à gauche */
+}
+
+.create-contract-button button {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: red; /* Fond rouge */
+  color: white; /* Texte blanc */
+  border: none; /* Pas de bordure */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transition pour changement de couleur */
+}
+
+.create-contract-button button:hover {
+  background-color: darkred; /* Change la couleur au survol */
+}
